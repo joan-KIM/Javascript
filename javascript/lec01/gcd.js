@@ -43,3 +43,19 @@ export function euclidGcd(a,b){
 
     return a;
 }
+
+export function euclidGcd2(a,b){
+    let tmp = 0;
+
+    if(a < b){
+        tmp = a;
+        a = b;
+        b = tmp;
+    }
+
+    if (b==0){
+        return a;
+    } else{
+        return euclidGcd2(b, a%b);
+    }
+}
