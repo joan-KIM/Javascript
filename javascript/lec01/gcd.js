@@ -24,3 +24,22 @@ export function multiGcd(...args) {
     }
     return answer;
 }
+
+export function euclidGcd(a,b){ 
+    let tmp = 0;
+    let rmd = 0;
+
+    if(a < b){
+        tmp = a;
+        a = b;
+        b = tmp;
+    }
+
+    while(b){
+        rmd = a % b;
+        a = b;
+        b = rmd;
+    }
+
+    return a;
+}
