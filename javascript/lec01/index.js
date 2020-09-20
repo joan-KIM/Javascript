@@ -10,5 +10,5 @@ export function main(){
     // console.log(euclidGcd(10,4) === 2);
     // console.log(euclidGcd(16,72) === 8);
 
-    console.log(rec_euclidGcd(10,45) === 5);
+    console.log(rec_euclidGcd(10,20));
 }

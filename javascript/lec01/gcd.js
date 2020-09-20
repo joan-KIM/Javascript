@@ -26,12 +26,8 @@ export function multiGcd(...args) {
 }
 
 export function euclidGcd(a,b){ 
-    let tmp = 0;
-
     if(a < b){
-        tmp = a;
-        a = b;
-        b = tmp;
+        [a,b] = [b,a]
     }
 
     while(b){
@@ -44,15 +40,11 @@ export function euclidGcd(a,b){
 }
 
 export function rec_euclidGcd(a,b){
-    if(a < b){
-        [a,b] = [b,a]
-    }
-
     if (b==0){
         return a;
     } else{
-        return rec_euclidGcd2(b, a%b);
+        return rec_euclidGcd(b, a%b);
     }
-
-    // return (b==0)?a:rec_euclidGcd(b, a%b);
 }
+
+// const gcd = (a,b) => b? gcd(b, a%b) : a;
