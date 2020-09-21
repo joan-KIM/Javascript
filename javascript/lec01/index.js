@@ -13,7 +13,9 @@ export function main(){
     console.log(rec_euclidGcd(10,20));
     */
 
-    console.log(calcAnd(true, 0) === false)
-    console.log(calcOr(1,true) === true)
-    console.log(calcNot(0, true) === true)
+    console.log(calcAnd(true, true) === true)
+    console.log(calcOr(1,0) === true)
+    console.log(calcNot(true))
+    console.log(calcNot(0))
+    
 }
