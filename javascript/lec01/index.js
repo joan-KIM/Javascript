@@ -1,11 +1,15 @@
 // import {gcd, multiGcd, euclidGcd, rec_euclidGcd} from './gcd.js';
 // import {calcAnd, calcOr, calcNot} from './week01.js';
-import {binaryNum} from './week01-2.js';
+import {toBinary, toDecimal} from './week01-2.js';
 
 // 결과 확인할 내용을 main() 안에 작성
 
 export function main(){
-    console.log(binaryNum(3));
+    console.log(toBinary(18));
+    console.log(toDecimal([1,0,0,1]));
+    console.log(toDecimal([1,1,1,0]));
+    console.log(toDecimal([1,0,0]))
+
 
     /*
     console.log(gcd(3, 12) ===3);
