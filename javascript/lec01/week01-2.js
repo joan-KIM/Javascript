@@ -21,3 +21,15 @@ export function toDecimal(binaryArr){
 
     return answer;
 }
+
+export function rec_toBinary(dec){
+   if (dec === 0 || dec === 1){
+       return [dec];
+   }else{
+       return rec_toBinary(Math.floor(dec/2)).concat(dec%2);
+   }  
+}
+
+function rec_toDecimal(binaryArr){
+    
+}
