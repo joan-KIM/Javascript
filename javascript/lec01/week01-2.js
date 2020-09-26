@@ -13,13 +13,11 @@ export function toBinary(a){
     return answer;
 }
 
-export function toDecimal(args){
+export function toDecimal(binaryArr){
     let answer = 0;
-    let exp = args.length - 1;
 
-    for(let i=0; i < args.length; i++){
-        answer = answer + args[i] * (2 ** exp);
-        exp--;
+    for(let i=0; i < binaryArr.length; i++){
+        answer += binaryArr[i] * (2 ** (binaryArr.length-1-i) );
     }
 
     return answer;
