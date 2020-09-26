@@ -5,7 +5,7 @@ import {toBinary, toDecimal} from './week01-2.js';
 // 결과 확인할 내용을 main() 안에 작성
 
 export function main(){
-    console.log(toBinary(4));
+    console.log(toBinary(5));
     console.log(toDecimal([1,0,0,1]));
     console.log(toDecimal([1,1,1,0]));
     console.log(toDecimal([1,0,0]))
