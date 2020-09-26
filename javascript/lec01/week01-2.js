@@ -1,7 +1,5 @@
 // 3. 진수변환
 export function toBinary(dec){
-    if (dec === 0) return [0]
-
     let answer = [];
 
     while(dec){
