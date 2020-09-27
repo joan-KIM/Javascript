@@ -1,16 +1,16 @@
 // import {gcd, multiGcd, euclidGcd, rec_euclidGcd} from './gcd.js';
-// import {calcAnd, calcOr, calcNot} from './week01.js';
-import {toBinary, toDecimal, rec_toBinary, rec_toDecimal} from './week01-2.js';
+import { fullAdder, halfAdder, calcAnd, calcOr, calcNot} from './week01.js';
+// import {toBinary, toDecimal, rec_toBinary, rec_toDecimal} from './week01-2.js';
 
 // 결과 확인할 내용을 main() 안에 작성
 
 export function main(){
     // console.log(toBinary(11));
     // console.log(rec_toBinary(11));
-    console.log(toDecimal([1,0,0,1]));
-    console.log(rec_toDecimal([1,0,0,1]));
-    console.log(toDecimal([1,1,1]));
-    console.log(rec_toDecimal([1,1,1]));
+    // console.log(toDecimal([1,0,0,1]));
+    // console.log(rec_toDecimal([1,0,0,1]));
+    // console.log(toDecimal([1,1,1]));
+    // console.log(rec_toDecimal([1,1,1]));
 
 
     /*
@@ -28,4 +28,10 @@ export function main(){
     console.log(calcNot(true))
     console.log(calcNot(0))
     */
+
+    console.log(halfAdder(0,0), halfAdder(1,0), halfAdder(0,1), halfAdder(1,1));
+    console.log(fullAdder(1,1,0));
+    console.log(fullAdder(0,0,1));
+    console.log(fullAdder(1,1,1));
+    
 }
