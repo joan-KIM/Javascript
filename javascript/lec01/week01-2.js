@@ -30,6 +30,12 @@ export function rec_toBinary(dec){
    }  
 }
 
-function rec_toDecimal(binaryArr){
-    
+// export const rec_toBinary = dec => (dec===0 || dec===1) ? [dec] : rec_toBinary(Math.floor(dec/2)).concat(dec%2);
+
+export function rec_toDecimal(binaryArr){
+    if (binaryArr.length === 0){
+        return 0;
+    }else{
+        return binaryArr.shift() * (2 ** binaryArr.length) + rec_toDecimal(binaryArr);
+    }
 }
