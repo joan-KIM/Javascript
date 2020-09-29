@@ -17,9 +17,8 @@ export function halfAdder(a,b) {
 }
 
 export function fullAdder(a,b,c) {
-    let sum, sumOut, carry1, carry2, carryOut;
-    [sum, carry1] = halfAdder(a,b);
-    [sumOut, carry2] = halfAdder(c,sum);
-    carryOut = Number(calcOr(carry1, carry2));
+    const [sum, carry1] = halfAdder(a,b);
+    const [sumOut, carry2] = halfAdder(c,sum);
+    const carryOut = Number(calcOr(carry1, carry2));
     return [sumOut, carryOut];
 }
