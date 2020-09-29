@@ -24,7 +24,7 @@ export function fullAdder(a,b,c) {
 
 // 4. 이진수 덧셈
 
-/* toBinary가 고정길이 배열을 반환할 경우
+/* toBinary가 고정길이 배열을 반환할
 export function toBinary(dec){
     let answer = [0,0,0,0,0,0,0,0];
     let i = 0;
@@ -110,17 +110,17 @@ export function addBinary3(arr1, arr2){
     let [sum, carry] = [0,0];
 
     for (let i = 0; i < length; i++){
-        if (carry){
-            [sum, carry] = fullAdder(arr1[i], arr2[i], carry);
-        }else{
-            [sum, carry] = halfAdder(arr1[i], arr2[i]);
-        }
+        [sum, carry] = fullAdder(arr1[i], arr2[i], carry);
         answer[i] = sum;
     }
 
     for (let i = length; carry = 0; i++){
         [sum, carry] = halfAdder(answer[i], carry);
         answer[i] = sum;
+    }
+
+    if (carry){
+        answer.push(carry);
     }
 
     return answer;
