@@ -22,6 +22,7 @@ export function toDecimal(binaryArr){
     return answer;
 }
 
+// 재귀로 구현해보기.
 export function rec_toBinary(dec){
    if (dec === 0 || dec === 1){
        return [dec];
