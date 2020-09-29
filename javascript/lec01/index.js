@@ -1,5 +1,5 @@
 // import {gcd, multiGcd, euclidGcd, rec_euclidGcd} from './gcd.js';
-import { fullAdder, halfAdder, calcAnd, calcOr, calcNot} from './week01.js';
+import { toBinary, addBinary3, fullAdder, halfAdder, calcAnd, calcOr, calcNot} from './week01.js';
 // import {toBinary, toDecimal, rec_toBinary, rec_toDecimal} from './week01-2.js';
 
 // 결과 확인할 내용을 main() 안에 작성
@@ -29,9 +29,15 @@ export function main(){
     console.log(calcNot(0))
     */
 
+    /*
     console.log(halfAdder(0,0), halfAdder(1,0), halfAdder(0,1), halfAdder(1,1));
     console.log(fullAdder(1,1,0));
     console.log(fullAdder(0,0,1));
     console.log(fullAdder(1,1,1));
+    */
+
+    console.log(toBinary(12));
+    console.log(addBinary3(toBinary(4), toBinary(64)));
+    console.log(addBinary3(toBinary(2), toBinary(80)));
     
 }
