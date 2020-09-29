@@ -1,6 +1,6 @@
 // import {gcd, multiGcd, euclidGcd, rec_euclidGcd} from './gcd.js';
-import { toBinary, addBinary3, fullAdder, halfAdder, calcAnd, calcOr, calcNot} from './week01.js';
-// import {toBinary, toDecimal, rec_toBinary, rec_toDecimal} from './week01-2.js';
+import { toBinary, addBinary3, fullAdder, halfAdder, calcAnd, calcOr, calcNot} from './addBinary.js';
+// import {toBinary, toDecimal, rec_toBinary, rec_toDecimal} from './binToDecjs';
 
 // 결과 확인할 내용을 main() 안에 작성
 
@@ -37,7 +37,7 @@ export function main(){
     */
 
     console.log(toBinary(12));
-    console.log(addBinary3(toBinary(4), toBinary(64)));
-    console.log(addBinary3(toBinary(2), toBinary(80)));
+    console.log(addBinary3(toBinary(64), toBinary(4)));
+    console.log(addBinary3(toBinary(7), toBinary(2)));
     
 }
