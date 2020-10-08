@@ -9,6 +9,7 @@ function getCircle({radius}){
 function getTriangle({base, height}){
     return base * height * 0.5;
 }
+
 /*
 let obj = {
     width:5,
@@ -20,6 +21,7 @@ getArea('rectangle', {
     height:10
 });
 */
+
 export function getArea(figure, values){
     switch(figure){
         case 'rectangle':
