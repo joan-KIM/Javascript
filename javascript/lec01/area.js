@@ -1,18 +1,26 @@
-function getRect(values){
-    const [w,h] = values;
-    return w*h;
+function getRect({width, height}){
+    return width * height;
 }
 
-function getCircle(r){
-    return Math.PI * r ** 2;
+function getCircle({radius}){
+    return Math.PI * radius ** 2;
 }
 
-function getTriangle(values){
-    const [b,h] = values;
-    return b * h * 0.5;
+function getTriangle({base, height}){
+    return base * height * 0.5;
 }
+/*
+let obj = {
+    width:5,
+    height:10
+};
 
-export function getArea(figure, ...values){
+getArea('rectangle', {
+    width:5,
+    height:10
+});
+*/
+export function getArea(figure, values){
     switch(figure){
         case 'rectangle':
             return getRect(values);
