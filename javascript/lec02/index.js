@@ -15,13 +15,17 @@ Array.prototype.customFlat = customFlat;
 
 export function main(){
 
+    const arr = [1, 2, , , ,[3, 4, [5, 6]]];
+
+    console.log(arr.customFlat());
+
     // expect({name : 'minji', birthday : 1220, age:25}, {name : 'minji', birthday : 1220});
     // expect({name : 'minji', birthday : 1118, height:150}, {name : 'minji', birthday : 1220, height:155})
 
     // expect( [1,2,3,[4,5]], [1,2,3,[4,5]]);
     // expect( [1,2,{name : 'minji', birthday : 1220},[4,5]], [1,2,3,[5]]);
 
-    expect({ a:1, b:{c:2, d:{e:['f', {g:'h'}]},i:[]}}, { a:1, b:{c:2, d:{e:['f', {g:'h'}]},i:[]}})
+    // expect({ a:1, b:{c:2, d:{e:['f', {g:'h'}]},i:[]}}, { a:1, b:{c:2, d:{e:['f', {g:'h'}]},i:[]}})
 
     /*
     console.log( [5,10,23,4].customFilter(x => x > 8) );
@@ -36,7 +40,8 @@ export function main(){
         return acc;
     }, {} ) );
     */
-/*
+
+    /*
     
     function square(n) {
         return n * n;

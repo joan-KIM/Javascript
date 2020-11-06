@@ -71,7 +71,8 @@ export function customFlat(depth) {
     }
 
     while (depth) {
-        arr = arr.reduce((acc,val) => {
+        arr = arr.reduce((acc,val) => {     // 공백제거는 어떻게 되는거죠..?
+            console.log(val);
            return acc.concat(val);
         }, []);
         depth--;
