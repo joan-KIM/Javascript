@@ -39,50 +39,40 @@
     </div>
 
 <script>
-    const $splash = document.getElementById('splash');
-    const $main = document.getElementById('main');
-    const $cat = document.getElementById('cat');
-    
-    const splashTimePromise = new Promise((resolve) => {
-        setTimeout(() => {
-            resolve();
-        }, 3000);
-    })
+    async function main() {
 
-    // 1. api 요청 (서버통신)
-    // 랜덤 고양이 사진 가져오기
-    // https://aws.random.cat/meow
-    // fetch(URL) <-- promise를 return
-    const responsePromise = fetch('https://aws.random.cat/meow');
-    
-    // 2. 응답이 올때까지 스플래시 화면을 보여줌
-    // $splash.style.display = 'block';
-    
-    // dataPromise <-- responsePromise이 갖고 있는 promise
-    const dataPromise = responsePromise.then((response) => {
-        // 응답이 왔으면.
-        console.log(response)
+        const $splash = document.getElementById('splash');
+        const $main = document.getElementById('main');
+        const $cat = document.getElementById('cat');
+        
+        const splashTimePromise = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, 3000);
+        })
+        
+        // 1. api 요청 (서버통신)
+        // 랜덤 고양이 사진 가져오기
+        // https://aws.random.cat/meow
+        // fetch(URL) <-- promise를 return
+        const response = await fetch('https://aws.random.cat/meow');
+        
         if (response.ok) {
-            return response.json();         // json()도 promise를 return
-        }
-    })
+            const data = await response.json();        // json()도 promise를 return
 
-    // data <-- response.json()
-    dataPromise.then((data) => {
-        console.log(data);
-        if (data.file) {
-            $cat.src = data.file;
-        }
-        // 3. 응답이 빠르게 오더라도 스플래시 화면 3초는 보장해야함
-        // 4. 응답이 왔고, 3초가 지났다면 메인 화면 보여줌
-        splashTimePromise.then(() => {
+            if (data.file) {
+                $cat.src = data.file;
+            }
+            
+            await splashTimePromise;
+
             $splash.style.display = 'none';
             $main.style.display = 'block';
-        })
-    })
-    
-    
-    </script>
+        }
+    }
+        // splashTimePromise, responsePromise가 각 각 실행되고 성공적으로 수행이 끝난 뒤, then() 안의 코드가 실행됨.
+</script>
     
 </body>
 </html>
+    
