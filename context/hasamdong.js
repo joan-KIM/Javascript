@@ -42,7 +42,13 @@ function coffeeLoop() {
         if(!isMaking && orderQueue.length > 0){
             // 안만드는 중이면 orderQueue에서 하나 꺼내서 make 하라고 한다.
             const order = orderQueue.shift();
-            make(order);
+
+            // make 동작이 다 끝나고 push 해야함. 근데 make 함수가 비동기함수.
+            make(order.coffee, (coffee)=> {
+                completeQueue.push({name : order.name, coffee : coffee});
+                console.log(coffee.menu + coffee.quantity + '제조완료');
+            });
+            
         }
         // 완료목록 확인해서 완료된거 있으면 완료됐다고 console 찍는다.
         if(completeQueue.length > 0){
@@ -52,24 +58,22 @@ function coffeeLoop() {
     }, 1000);
 }
 
+
 /**
  * 커피 만들기
- * @param {Object} order 주문
- * @param {string} order.name 주문
- * @param {string} order.coffee.menu 커피 이름
+ * @param {string} coffee.menu 커피 이름
  * @param {number} coffee.quantity 커피 수량
  */
-function make(order) {
+// coffee, 제조 완료 됏을 때 동작할 함수(제조 완료 알려주는 함수)
+function make(coffee, onComplete) {
     isMaking = true;
-    const duration = COFFEE_TIME[order.coffee.menu] * order.coffee.quantity;
-    console.log(order.coffee.menu + '제조시작');
+    const duration = COFFEE_TIME[coffee.menu] * coffee.quantity;
+    console.log(coffee.menu + '제조시작');
 
     setTimeout(() => {
-        console.log(order.coffee.menu + order.coffee.quantity + '제조완료');
-        isMaking = false;
-        completeQueue.push(order);
+        isMaking = false;       
+        onComplete(coffee);
     }, duration);
-    
 }
 
 // jsdoc
