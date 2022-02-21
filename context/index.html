@@ -1,0 +1,88 @@
+<html>
+    <head>
+<style>
+.splash {
+    background-color: #f2f2f2;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+
+.main {
+    background-color: aqua;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: none;
+}
+
+    
+</style>
+</head>
+
+<body>
+    <div id="splash" class="splash"><h1>Splash</h1></div>
+    <div id="main" class="main">
+        <h2>고양이</h2>
+        <img id="cat" alt="cat" width="1200"></img>
+    </div>
+
+<script>
+    const $splash = document.getElementById('splash');
+    const $main = document.getElementById('main');
+    const $cat = document.getElementById('cat');
+    
+    const splashTimePromise = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 3000);
+    })
+
+    // 1. api 요청 (서버통신)
+    // 랜덤 고양이 사진 가져오기
+    // https://aws.random.cat/meow
+    // fetch(URL) <-- promise를 return
+    const responsePromise = fetch('https://aws.random.cat/meow');
+    
+    // 2. 응답이 올때까지 스플래시 화면을 보여줌
+    // $splash.style.display = 'block';
+    
+    // dataPromise <-- responsePromise이 갖고 있는 promise
+    const dataPromise = responsePromise.then((response) => {
+        // 응답이 왔으면.
+        console.log(response)
+        if (response.ok) {
+            return response.json();         // json()도 promise를 return
+        }
+    })
+
+    // data <-- response.json()
+    dataPromise.then((data) => {
+        console.log(data);
+        if (data.file) {
+            $cat.src = data.file;
+        }
+        // 3. 응답이 빠르게 오더라도 스플래시 화면 3초는 보장해야함
+        // 4. 응답이 왔고, 3초가 지났다면 메인 화면 보여줌
+        splashTimePromise.then(() => {
+            $splash.style.display = 'none';
+            $main.style.display = 'block';
+        })
+    })
+    
+    
+    </script>
+    
+</body>
+</html>
