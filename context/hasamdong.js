@@ -36,6 +36,7 @@ const completeQueue = [];
 
 let isMaking;
 
+
 function coffeeLoop() {
     setInterval(() => {
         // 만드는 중인지 확인
@@ -44,7 +45,9 @@ function coffeeLoop() {
             const order = orderQueue.shift();
 
             // make 동작이 다 끝나고 push 해야함. 근데 make 함수가 비동기함수.
-            make(order.coffee, (coffee)=> {
+            const p = make(order.coffee);
+
+            p.then((coffee)=> {
                 completeQueue.push({name : order.name, coffee : coffee});
                 console.log(coffee.menu + coffee.quantity + '제조완료');
             });
@@ -58,22 +61,25 @@ function coffeeLoop() {
     }, 1000);
 }
 
-
 /**
  * 커피 만들기
  * @param {string} coffee.menu 커피 이름
  * @param {number} coffee.quantity 커피 수량
  */
 // coffee, 제조 완료 됏을 때 동작할 함수(제조 완료 알려주는 함수)
-function make(coffee, onComplete) {
+function make(coffee) {
     isMaking = true;
     const duration = COFFEE_TIME[coffee.menu] * coffee.quantity;
     console.log(coffee.menu + '제조시작');
 
-    setTimeout(() => {
-        isMaking = false;       
-        onComplete(coffee);
-    }, duration);
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            isMaking = false;       
+            resolve(coffee);    
+        }, duration);
+    }) 
+
+    return promise;
 }
 
 // jsdoc
