@@ -1,5 +1,8 @@
 function clock(){
-    const $clock = document.getElementById('clock');
+    const $hour = document.getElementById('hour');
+    const $minute = document.getElementById('minute');
+    const $second = document.getElementById('second');
+
     setInterval(() => {
         const now = new Date();
 
@@ -8,7 +11,10 @@ function clock(){
         const second = now.getSeconds();
 
         // console.log(hour, minute, second);
-        $clock.innerHTML = `${hour < 10 ? '0'+hour : hour} : ${minute < 10 ? '0'+minute : minute} : ${second < 10 ? '0'+second : second}`;
+        $hour.innerHTML = `${hour < 10 ? '0'+hour : hour}`;
+        $minute.innerHTML = `${minute < 10 ? '0'+minute : minute}`;
+        $second.innerHTML = `${second < 10 ? '0'+second : second}`;
+
     }, 1000);
 }
 
@@ -73,7 +79,7 @@ async function main() {
         await splashTimePromise;
 
         $splash.style.display = 'none';
-        $main.style.display = 'block';
+        $main.style.display = 'flex';
     }
 
 }

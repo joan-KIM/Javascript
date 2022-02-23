@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Cat</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital@0;1&display=swap" rel="stylesheet">
     <link rel = "stylesheet" href = "style.css">
     <script src="script.js" defer></script>
 </head>
@@ -12,12 +15,26 @@
 <body>
     <div id="splash" class="splash"><h1>Splash</h1></div>
     <div id="main" class="main">
-        <h1 id="clock"></h1>
-        <div>
-            <span id="city"></span>의 날씨는 <span id="weather"></span>
+        <div class="text-section">
+            <a href="" class="link">>> corona</a>
+            <div class="information">
+                <p class="clock">
+                    <span id="hour"></span> : <span id="minute"></span> : <span id="second"></span>
+                </p>
+                <p class="city-info">
+                    City:<br>
+                    <span id="city"></span>
+                </p>
+                <p class="weather-info">
+                    Weather:<br>
+                    <span id="weather"></span>
+                </p>
+            </div>
         </div>
-        <h2>고양이</h2>
-        <img id="cat" alt="cat" width="1200" ></img>
+
+        <div class="image">
+            <img id="cat"  alt="cat" ></img>
+        </div>
     </div>
 </body>
 </html>
