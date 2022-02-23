@@ -34,13 +34,50 @@
 <body>
     <div id="splash" class="splash"><h1>Splash</h1></div>
     <div id="main" class="main">
+        <div>
+            <span id="city"></span>의 날씨는 <span id="weather"></span>
+        </div>
         <h2>고양이</h2>
         <img id="cat" alt="cat" width="1200"></img>
     </div>
 
 <script>
-    async function main() {
+    
+    function showWeather() {
+        const $city = document.getElementById('city');
+        const $weather = document.getElementById('weather');
+        const API_key = '960ea383db3b7131c3ea302c7b5ac0c4';
 
+        // 1. 위도 / 경도 가져오기 window.navigator
+        navigator.geolocation.getCurrentPosition((position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            console.log(lat, lon);
+
+            // 2. 날씨 api 요청
+            // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=2313f72f528ba9b181f713691469a1df&units=metric`
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}`;
+            const responsePromise = fetch(url);
+
+            const dataPromise = responsePromise.then((response) => {
+                if(response.ok){
+                    return response.json();
+                }
+            });
+
+            // 3. 화면에 날씨 표시
+            dataPromise.then((data) => {
+                console.log(data);
+                // console.log(data.name, data.weather[0].main);
+
+                $city.innerHTML = data.name;
+                $weather.innerHTML = data.weather[0].main;
+            })
+
+        }, console.error);
+    }
+    
+    async function main() {
         const $splash = document.getElementById('splash');
         const $main = document.getElementById('main');
         const $cat = document.getElementById('cat');
@@ -50,7 +87,7 @@
                 resolve();
             }, 3000);
         })
-        
+
         // 1. api 요청 (서버통신)
         // 랜덤 고양이 사진 가져오기
         // https://aws.random.cat/meow
@@ -69,8 +106,10 @@
             $splash.style.display = 'none';
             $main.style.display = 'block';
         }
+
     }
-        // splashTimePromise, responsePromise가 각 각 실행되고 성공적으로 수행이 끝난 뒤, then() 안의 코드가 실행됨.
+    showWeather();
+    main();
 </script>
     
 </body>
